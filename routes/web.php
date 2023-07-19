@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('list-categories', [CategoryController::class, 'index']);
+//category
+Route::get('categories', [CategoryController::class, 'index']);
+Route::post('categories', [CategoryController::class, 'index'])->name('seach_category');
+//product
+Route::get('products', [ProductController::class, 'index']);
+Route::post('products', [ProductController::class, 'index'])->name('search_product');
+Route::get('product/add', [ProductController::class, 'create'])->name('add_product');
+
+// Route::match(['get', 'post'], 'product/add', [ProductController::class, 'create'])->name('add_product');

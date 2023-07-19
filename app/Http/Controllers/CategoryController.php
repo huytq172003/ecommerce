@@ -13,12 +13,13 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
+        $title = 'Danh sách danh mục';
         $categories = DB::table('categories')->get();
         if($request->post())
         {
             $categories = DB::table('categories')->where('name', 'like', '%' . $request->search_name . '%')->get();
         }
-        return view('category.index', compact('categories'));
+        return view('backend.category.index', compact('categories', 'title'));
     }
 
     /**
